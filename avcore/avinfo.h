@@ -36,6 +36,9 @@ public:
       */
      vector<string> GetUrlProtocolInfo(int type);
      vector<string> GetAvFormatInfo(int type);
+     vector<string> GetAvEncode(void);
+     vector<string> GetAvDecode(void);
+     vector<string> GetAvStreamFilter(void);
      string GetVersionInfo(void);
      string GetConfigInfo(void);
      unsigned GetVersionNumber(void);

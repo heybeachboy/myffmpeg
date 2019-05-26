@@ -18,7 +18,7 @@ int main()
     cout << "License:" << info.GetLicense() << endl;
     cout << "Configure:" << info.GetConfigInfo() << endl;
 
-    vector<string> in = info.GetAvFormatInfo(1);
+    vector<string> in = info.GetAvStreamFilter();
     for(auto val : in)cout << val << " ";
     cout << "\n" <<endl;
    // cout << "SUM :" << m.Sum(100, 600) << endl;

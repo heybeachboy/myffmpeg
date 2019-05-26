@@ -5,7 +5,7 @@
 #include "avinfo.h"
 AvInfo::AvInfo()
 {
-    size = 40000;
+    size = 4;
     data = (char *)malloc(size);
 
 }
@@ -66,6 +66,47 @@ vector<string> AvInfo::GetAvFormatInfo(int type) {
     }
     return rest;
 
+}
+
+vector<string>AvInfo::GetAvDecode(){
+    vector<string> rest;
+    void *opaque = NULL;
+    const AVCodec *deCodec = av_codec_iterate(&opaque);
+    while (deCodec != NULL) {
+        if(av_codec_is_decoder(deCodec)){
+            rest.push_back(deCodec->name);
+        }
+        deCodec = av_codec_iterate(&opaque);
+    }
+    return rest;
+
+}
+
+vector<string>AvInfo::GetAvEncode(){
+    vector<string> rest;
+    void *opaque = NULL;
+    const AVCodec *avCodec = av_codec_iterate(&opaque);
+    while (avCodec != NULL) {
+        if(av_codec_is_encoder(avCodec)){
+            rest.push_back(avCodec->name);
+        }
+        avCodec = av_codec_iterate(&opaque);
+    }
+    return rest;
+
+}
+
+vector<string> AvInfo::GetAvStreamFilter(){
+    vector<string> rest;
+    void *opaque = NULL;
+
+    const AVBitStreamFilter *bsf = av_bsf_iterate(&opaque);
+
+    while (bsf != NULL) {
+        rest.push_back(bsf->name);
+        bsf = av_bsf_iterate(&opaque);
+    }
+    return rest;
 }
 
 AvInfo::~AvInfo(){

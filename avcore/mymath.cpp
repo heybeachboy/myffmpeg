@@ -1,5 +1,8 @@
 #include "mymath.h"
-
+/**
+ *这个类仅仅做测试用，没有实际意义
+ * @brief MyMath::MyMath
+ */
 MyMath::MyMath()
 {
 
